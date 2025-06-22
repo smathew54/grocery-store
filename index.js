@@ -26,8 +26,12 @@ const inventory = [
  * @param {Item[]} items - array of items
  */
 function logNames(items) {
-  // TODO: use `forEach`
-}
+  items.forEach((element) => {
+    //console.log(element.name);
+    return element.name;
+  });
+};
+
 
 /**
  * @param {Item[]} items - array of items
@@ -35,6 +39,9 @@ function logNames(items) {
  */
 function getUppercaseNames(items) {
   // TODO: use `map`
+  const upperNames = items.map((element) => element.name.toUpperCase());
+  //console.log("Shawn was here");
+  return upperNames;
 }
 
 /**
@@ -43,8 +50,11 @@ function getUppercaseNames(items) {
  * @returns {Item} - the item in `items` with the given `id`
  */
 function getItemById(items, id) {
-  // TODO: use `find`
-}
+  const itemById = items.find(element => element.id === id);
+  console.log(itemById.name);
+  console.log(`item with id: ${id} is ${itemById.name} `);
+  return itemById;
+};
 
 /**
  * @param {Item[]} items - array of items
@@ -53,6 +63,12 @@ function getItemById(items, id) {
  */
 function getItemPriceByName(items, name) {
   // TODO: use a loop!
+  for (let element of items) {
+    if (element.name === name) {
+      console.log(element.price);
+      return element.price;
+    }
+  }
 }
 
 /**
@@ -62,6 +78,8 @@ function getItemPriceByName(items, name) {
  */
 function getItemsByCategory(items, category) {
   // TODO: use `filter`
+  const foundItems = items.filter((element) => element.category === category);
+  console.log(foundItems);
 }
 
 /**
@@ -70,7 +88,12 @@ function getItemsByCategory(items, category) {
  */
 function countItems(items) {
   // TODO: use `reduce`
-}
+  const totalItems = items.reduce((acc, items) => acc + items.quantity, 0);
+  console.log(`this is the totalItems: ${totalItems}`);
+  return totalItems;
+};
+
+console.log(countItems(inventory));
 
 /**
  * @param {Item[]} items - array of items
@@ -78,6 +101,9 @@ function countItems(items) {
  */
 function getTotalPrice(items) {
   // TODO: use `reduce`
+  const totalPrice = items.reduce((acc, items) => acc + (items.quantity*items.price), 0);
+  console.log(`this is the totalPrice: ${totalPrice}`);
+  return totalPrice;
 }
 
 // === READ BUT DO NOT CHANGE THE CODE BELOW ===
